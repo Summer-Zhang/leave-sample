@@ -7,6 +7,7 @@ import ddd.leave.interfaces.assembler.LeaveAssembler;
 import ddd.leave.interfaces.assembler.PersonAssembler;
 import ddd.leave.interfaces.dto.LeaveDTO;
 import ddd.leave.interfaces.dto.PersonDTO;
+import java.text.ParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class AuthApi {
     LoginApplicationService loginApplicationService;
 
     @PostMapping("/login")
-    public Response login(PersonDTO personDTO){
+    public Response login(PersonDTO personDTO) throws ParseException {
         return loginApplicationService.login(PersonAssembler.toDO(personDTO));
     }
 }
